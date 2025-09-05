@@ -17,41 +17,101 @@ st.markdown("""
     /* Background */
     [data-testid="stAppViewContainer"] {
         background: linear-gradient(135deg, #e6f7ff 0%, #c3f2f5 50%, #f9f9f9 100%);
-        color: black !important;
+        color: #1a1a1a;
     }
-
-    /* Sidebar */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #e0f7fa, #ffffff);
+        background: linear-gradient(180deg, #b2fefa 0%, #0ed2f7 100%);
+        color: black;
+    }
+    [data-testid="stHeader"] {background-color: rgba(0,0,0,0);}
+
+    /* Hero Banner */
+    .hero {
+        text-align: center;
+        padding: 40px;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 100%);
+        color: white;
+        border-radius: 15px;
+        box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+        animation: fadeIn 2s ease-in-out;
+    }
+    .hero h1 { font-size: 3em; margin-bottom: 10px; }
+    .hero p { font-size: 1.2em; margin-bottom: 0; }
+
+    /* Form Labels */
+    label, .stSelectbox label, .stNumberInput label {
+        font-size: 18px !important;
+        font-weight: bold !important;
+        color: #0d1b2a !important;
     }
 
-    /* Card style */
-    .stCard {
-        background-color: white;
-        padding: 25px;
-        border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        color: black; /* Text always black */
+    /* Dropdown text color → white */
+    .stSelectbox div[data-baseweb="select"] span {
+        color: white !important;
+    }
+
+    input, select, textarea {
+        font-size: 16px !important;
+        padding: 8px !important;
     }
 
     /* Buttons */
-    div.stButton > button {
-        background: linear-gradient(90deg, #0072ff, #00c6ff);
+    button {
+        font-size: 18px !important;
+        border-radius: 10px !important;
+        transition: all 0.3s ease-in-out;
+    }
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(0,150,255,0.6);
+    }
+
+    /* Info/Instructions Box */
+    .stInfo {
+        background: #fff7e6 !important;
+        border-left: 6px solid #ff9800 !important;
+        padding: 10px !important;
+        font-size: 16px !important;
+        transition: all 0.3s ease-in-out;
+        color: black !important;
+    }
+    .stInfo:hover {
+        background: #ffe0b2 !important;
+        transform: scale(1.01);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Footer */
+    footer {visibility: hidden;}
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
         color: white;
-        border-radius: 12px;
-        font-size: 18px;
-        padding: 10px 20px;
-        border: none;
+        padding: 10px;
+        font-size: 14px;
+        background: linear-gradient(90deg, #2f80ed, #56ccf2);
     }
 
-    h1, h2, h3, h4, h5 {
-        color: #0072ff !important;
-        font-weight: bold;
+    /* Force ALL text to black (except banner & dropdowns) */
+    body, h1, h2, h3, h4, h5, h6, p, span, div, label, .stMarkdown, .stText, .stTabs [data-baseweb="tab"] {
+        color: black !important;
     }
-
     </style>
+
+    <div class="hero">
+        <h1>💠 Heart Disease Predictor</h1>
+        <p>Your personal AI-powered heart health assistant</p>
+    </div>
 """, unsafe_allow_html=True)
+
 # ----------------- UTILITY FUNCTION -----------------
 def get_binary_file_downloader_html(df):
     csv = df.to_csv(index=False)
@@ -177,5 +237,4 @@ with tab3:
 
 # ----------------- FOOTER -----------------
 st.markdown('<div class="footer">⚡ Built with Streamlit | Made with 💠 for healthcare</div>', unsafe_allow_html=True)
-
 
