@@ -164,7 +164,7 @@ with tab1:
     def predict_heart_disease(data):
         predictions = []
         for modelname in modelnames:
-            model = pickle.load(open(modelname, 'rb'))
+            model = pickle.load(open('LogisticR.pkl', 'rb'))
             predictions.append(model.predict(data))
         return predictions
 
@@ -237,4 +237,5 @@ with tab3:
 
 # ----------------- FOOTER -----------------
 st.markdown('<div class="footer">⚡ Built with Streamlit | Made with 💠 for healthcare</div>', unsafe_allow_html=True)
+
 
