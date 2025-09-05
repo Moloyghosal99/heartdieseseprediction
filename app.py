@@ -17,7 +17,7 @@ st.markdown("""
     /* Background */
     [data-testid="stAppViewContainer"] {
         background: linear-gradient(135deg, #e6f7ff 0%, #c3f2f5 50%, #f9f9f9 100%);
-        color: #1a1a1a;
+        color: black !important;
     }
 
     /* Sidebar */
@@ -25,13 +25,14 @@ st.markdown("""
         background: linear-gradient(180deg, #e0f7fa, #ffffff);
     }
 
-    /* Center card */
+    /* Card style */
     .stCard {
         background-color: white;
         padding: 25px;
         border-radius: 20px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         margin-bottom: 20px;
+        color: black; /* Text always black */
     }
 
     /* Buttons */
@@ -41,11 +42,16 @@ st.markdown("""
         border-radius: 12px;
         font-size: 18px;
         padding: 10px 20px;
+        border: none;
     }
+
+    h1, h2, h3, h4, h5 {
+        color: #0072ff !important;
+        font-weight: bold;
+    }
+
     </style>
 """, unsafe_allow_html=True)
-
-
 # ----------------- UTILITY FUNCTION -----------------
 def get_binary_file_downloader_html(df):
     csv = df.to_csv(index=False)
@@ -171,4 +177,5 @@ with tab3:
 
 # ----------------- FOOTER -----------------
 st.markdown('<div class="footer">⚡ Built with Streamlit | Made with 💠 for healthcare</div>', unsafe_allow_html=True)
+
 
